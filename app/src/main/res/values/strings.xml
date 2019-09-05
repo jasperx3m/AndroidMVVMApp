@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MVVM Application</string> <!--themify-->
+    <string name="email_icon"></string> <!--themify-->
+    <string name="password"></string> <!--themify-->
+    <string name="file"></string> <!--themify-->
+    <string name="user"></string> <!--simple line-->
+    <string name="edit"></string><!--themify-->
+    <string name="check"></string> <!--themify -->
+    <string name="question"></string> <!--simple line-->
+    <string name="forgot_pass"><u>Forgot Password?</u></string>
+    <string name="sign_up"><u>Sign Up Here</u></string>
+</resources>

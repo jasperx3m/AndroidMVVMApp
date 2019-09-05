@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small">12dp</dimen>
+    <dimen name="medium">16dp</dimen>
+    <dimen name="large">20dp</dimen>
+    <dimen name="small_icon">20dp</dimen>
+    <dimen name="large_icon">40dp</dimen>
+    <dimen name="small_cornerRadius">20dp</dimen>
+    <dimen name="large_cornerRadius">30dp</dimen>
+</resources>
