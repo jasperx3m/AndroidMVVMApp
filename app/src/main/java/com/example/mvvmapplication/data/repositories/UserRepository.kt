@@ -4,15 +4,20 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmapplication.data.network.LoginApi
+import com.example.mvvmapplication.data.network.SafeApiRequest
+import com.example.mvvmapplication.data.network.responses.AuthResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserRepository {
-    fun userLogin(email: String, password : String) : LiveData<String>{
-        val loginResponse = MutableLiveData<String>()
+class UserRepository : SafeApiRequest() {
+    suspend fun userLogin(email: String, password : String) : AuthResponse{
+        return apiRequest{LoginApi().userLogin(email,password)}
 
+
+/*         val loginResponse = MutableLiveData<String>()
+            return LoginApi().userLogin(email,password)
         LoginApi().userLogin(email, password)
             .enqueue(object: Callback<ResponseBody>{
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -31,6 +36,6 @@ class UserRepository {
                 }
 
             })
-        return loginResponse
+        return loginResponse*/ //change because call was changed to response
     }
 }

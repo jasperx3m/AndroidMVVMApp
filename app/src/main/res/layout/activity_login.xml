@@ -15,7 +15,7 @@
         tools:context=".ui.auth.LoginActivity"
         android:background="@color/colorBackground"
         android:padding="20dp"
-        android:id="@+id/loginRootLayout">
+        android:id="@+id/root_layout">
 
 
         <androidx.cardview.widget.CardView
