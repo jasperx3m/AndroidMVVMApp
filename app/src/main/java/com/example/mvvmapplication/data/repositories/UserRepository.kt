@@ -3,6 +3,8 @@ package com.example.mvvmapplication.data.repositories
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.mvvmapplication.data.db.AppDatabase
+import com.example.mvvmapplication.data.db.entities.User
 import com.example.mvvmapplication.data.network.LoginApi
 import com.example.mvvmapplication.data.network.SafeApiRequest
 import com.example.mvvmapplication.data.network.responses.AuthResponse
@@ -11,10 +13,27 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserRepository : SafeApiRequest() {
-    suspend fun userLogin(email: String, password : String) : AuthResponse{
-        return apiRequest{LoginApi().userLogin(email,password)}
+class UserRepository(
+    private val api: LoginApi,
+    private val db: AppDatabase
+) : SafeApiRequest() {
+    suspend fun userLogin(email: String, password: String): AuthResponse {
+        return apiRequest { api.userLogin(email, password) }
+    }
+    suspend fun userSignup(
+        name: String,
+        email: String,
+        password: String
+    ) : AuthResponse{
+        return apiRequest {api.userSignup(name,email,password)}
+    }
 
+    suspend fun saveUser(user: User) = db.getUserDao().upsert(user)
+
+    fun getUser() = db.getUserDao().getuser()
+
+
+}
 
 /*         val loginResponse = MutableLiveData<String>()
             return LoginApi().userLogin(email,password)
@@ -37,5 +56,3 @@ class UserRepository : SafeApiRequest() {
 
             })
         return loginResponse*/ //change because call was changed to response
-    }
-}

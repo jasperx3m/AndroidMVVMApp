@@ -110,6 +110,7 @@
                     android:id="@+id/signUpClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{viewmodel::onSignup}"
                     android:text="Sign Up Now"
                     android:textColor="@color/white"
                     android:textSize="@dimen/medium"
