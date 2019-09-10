@@ -1,6 +1,8 @@
 package com.example.mvvmapplication.data.network
 
+import com.example.mvvmapplication.data.db.entities.Quote
 import com.example.mvvmapplication.data.network.responses.AuthResponse
+import com.example.mvvmapplication.data.network.responses.QuotesResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -8,9 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 const val BASE_URL="https://api.simplifiedcoding.in/course-apis/mvvm/"
-interface LoginApi {
+interface MyApi {
 
     @FormUrlEncoded
     @POST("login")
@@ -28,11 +31,14 @@ interface LoginApi {
         @Field("password") password: String
     ) : Response<AuthResponse>
 
+    @GET("quotes")
+    suspend fun getQuotes() : Response<QuotesResponse>
+
 
     companion object{
         operator fun invoke(
             networkConnectionInterceptor: NetworkConnectionInterceptor
-        ) : LoginApi{
+        ) : MyApi{
 
             val okHttpClient= OkHttpClient.Builder()
                 .addInterceptor(networkConnectionInterceptor)
@@ -42,7 +48,7 @@ interface LoginApi {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build()
-                .create(LoginApi::class.java)
+                .create(MyApi::class.java)
         }
     }
 }

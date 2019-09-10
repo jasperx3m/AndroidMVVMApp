@@ -5,6 +5,9 @@
     <dimen name="large">20dp</dimen>
     <dimen name="small_icon">20dp</dimen>
     <dimen name="large_icon">40dp</dimen>
+    <dimen name="extra_large">80dp</dimen>
     <dimen name="small_cornerRadius">20dp</dimen>
     <dimen name="large_cornerRadius">30dp</dimen>
+    <dimen name="padding">20dp</dimen>
+    <dimen name="small_padding">10dp</dimen>
 </resources>

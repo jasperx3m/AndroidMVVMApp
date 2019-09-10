@@ -63,18 +63,18 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
 
         if (name.isNullOrEmpty()) {
             authListener?.onFailure("Name is Required")
+            return
         }
         if (email.isNullOrEmpty()) {
-            authListener?.onFailure("Name is Required")
+            authListener?.onFailure("Email is Required")
+            return
         }
         if (password.isNullOrEmpty()) {
-            authListener?.onFailure("Name is Required")
+            authListener?.onFailure("Password is Required")
+            return
         }
         if (password != passwordConfirm) {
             authListener?.onFailure("Password does not match")
-        }
-        if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
-            authListener?.onFailure("Incomplete Fields")
             return
         }
 
@@ -82,7 +82,8 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
             try {
                 val authResponse = repository.userSignup(name!!, email!!, password!!)
                 authResponse.user?.let {
-                    repository.saveUser(it)
+                    /*repository.saveUser(it)*/
+                    authListener?.onSuccess(it)
                     return@main
                 }
                 authListener?.onFailure(authResponse.message!!)

@@ -9,4 +9,8 @@ object Coroutines{ //static = object
         CoroutineScope(Dispatchers.Main).launch {
             work()
         } // learn higher order function and lambda
+    fun io(work: suspend(() -> Unit))=
+        CoroutineScope(Dispatchers.IO).launch{
+            work()
+        }
 }

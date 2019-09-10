@@ -11,6 +11,7 @@
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root_layout"
         tools:context=".ui.auth.SignUpActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,7 +33,7 @@
                 android:padding="20dp">
 
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:id="@+id/registernow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
                     tools:layout_conversion_absoluteHeight="41dp"
                     tools:layout_conversion_absoluteWidth="190dp" />
 
-                <android.inputmethodservice.ExtractEditText
+                <EditText
                     android:id="@+id/inputName"
                     android:text="@={viewmodel.name}"
                     android:layout_width="match_parent"
@@ -56,7 +57,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/registernow" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center_horizontal|center_vertical"
@@ -68,7 +69,7 @@
                     app:layout_constraintStart_toStartOf="@+id/inputName"
                     app:layout_constraintTop_toTopOf="@+id/inputName" />
 
-                <android.inputmethodservice.ExtractEditText
+                <EditText
                     android:id="@+id/inputEmail"
                     android:text="@={viewmodel.email}"
                     android:layout_width="match_parent"
@@ -79,7 +80,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center_horizontal|center_vertical"
@@ -91,7 +92,7 @@
                     app:layout_constraintStart_toStartOf="@+id/inputEmail"
                     app:layout_constraintTop_toTopOf="@+id/inputEmail" />
 
-                <android.inputmethodservice.ExtractEditText
+                <EditText
                     android:id="@+id/inputPassword"
                     android:text="@={viewmodel.password}"
                     android:layout_width="match_parent"
@@ -103,7 +104,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center_horizontal|center_vertical"
@@ -113,10 +114,9 @@
                     app:fontFamily="@font/themify_icon"
                     app:layout_constraintBottom_toBottomOf="@+id/inputPassword"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintStart_toStatOf="@+id/inputPassword"
                     app:layout_constraintTop_toTopOf="@+id/inputPassword" />
 
-                <android.inputmethodservice.ExtractEditText
+                <EditText
                     android:text="@={viewmodel.passwordConfirm}"
                     android:id="@+id/inputConfirmPassword"
                     android:layout_width="match_parent"
@@ -128,7 +128,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -137,7 +137,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword">
 
-                    <com.google.android.material.button.MaterialButton
+                    <Button
                         android:id="@+id/submitSignUpForm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                         app:layout_constraintHorizontal_weight="1"
                         app:layout_constraintStart_toStartOf="parent" />
 
-                    <com.google.android.material.button.MaterialButton
+                    <Button
                         android:id="@+id/cancelSignUp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -162,9 +162,9 @@
                         android:textColor="@color/white"
                         app:layout_constraintHorizontal_weight="1" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center_horizontal|center_vertical"
@@ -173,12 +173,18 @@
                     android:textSize="20dp"
                     app:fontFamily="@font/themify_icon"
                     app:layout_constraintBottom_toBottomOf="@+id/inputConfirmPassword"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintStart_toStatOf="@+id/inputConfirmPassword"
-                    app:layout_constraintTop_toTopOf="@+id/inputConfirmPassword" />
+                    app:layout_constraintStart_toStartOf="@id/inputConfirmPassword"
+                    app:layout_constraintTop_toTopOf="@id/inputConfirmPassword"  />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/signupProgressBar"
+                android:progressTint="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_gravity="center_horizontal|center_vertical"/>
 
 
         </androidx.cardview.widget.CardView>

@@ -4,15 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.mvvmapplication.data.db.entities.Quote
 import com.example.mvvmapplication.data.db.entities.User
 
 @Database(
-    entities =[User::class], // defining entities
-    version = 1 // database version
+    entities =[User::class, Quote::class], // defining entities
+    version = 1, // database version
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase(){
 
     abstract fun getUserDao() : UserDao
+    abstract fun getQuoteDao() : QuoteDao
 
     companion object{
         @Volatile //this variable is visible to other threads
